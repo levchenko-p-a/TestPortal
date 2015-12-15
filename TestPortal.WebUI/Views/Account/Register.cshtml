@@ -1,0 +1,18 @@
+﻿@model TestPortal.Domain.Entities.User
+
+@{
+    ViewBag.Title = "Регистрация нового пользователя";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h1>Регистрация нового пользователя</h1>
+@Html.ValidationSummary(true)
+@using (Html.BeginForm("Register", "Account",
+    FormMethod.Post))
+{
+    @Html.EditorForModel()
+    <input class="btn-link" type="submit" value="Зарегистрироваться" />
+    @Html.ActionLink("Отменить регистрацию", "Index", "Home")
+}
+
+

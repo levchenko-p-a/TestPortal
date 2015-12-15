@@ -1,0 +1,41 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Все тесты";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "tableBody",
+        Url = Url.Action("IndexAjax"),
+        LoadingElementDuration = 1000,
+        LoadingElementId = "loading"
+    };
+}
+<script>
+    function getStr() {
+        var value = $('#SelectTest').val();
+        if (value.length == 1) { value = 'All';}
+        $("#tableBody").load('@Url.Action("IndexAjax")', ({ SelectTest: value }))
+    }
+    $(document).ready(function () {
+        var myEl = document.getElementById('SelectTest');
+        myEl.addEventListener('keypress', getStr, false);
+    });
+</script>
+<h2>Все тесты</h2>
+
+<div id="loading" class="load" style="display:none">
+    <p>Загрузка данных...</p>
+</div>
+
+@using (Ajax.BeginForm("IndexAjax", ajaxOptions))
+{
+    <div>
+        <label for="SelectTest">Поиск по названию: </label>
+        @Html.TextBox("SelectTest", "", new { style = "Width:100%" })
+        <input type="submit" id="btnSearch" value="Найти"/>
+    </div>
+}
+
+@Html.Action("IndexAjax", new { SelectTest = Model })
+<p>@Html.ActionLink("Добавить тест", "Create")</p>

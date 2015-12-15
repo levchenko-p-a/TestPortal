@@ -1,0 +1,18 @@
+﻿@model TestPortal.Domain.Entities.Reply
+
+@{
+    ViewBag.Title = "Редактор: Ответ " + @Model.Text;
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h1>@Model.Text</h1>
+
+@using (Html.BeginForm("Edit", "ReplyEditor",
+    FormMethod.Post))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к вопросу", "Index", "QuestionEditor", new { Model.QuestionId }, null)
+}
+
+

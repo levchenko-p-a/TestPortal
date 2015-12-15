@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h4>Welcome : @(User.Name +" "+User.Surname)</h4>
+<h1>Admin DashBoard</h1>
+
+@Html.ActionLink("QuestionEditor", "Index", "QuestionEditor", new { area = "" }, new { @class = "navbar-brand" })
+@Html.ActionLink("TestEditor", "Index", "TestEditor", new { area = "" }, new { @class = "navbar-brand" })
+@Html.ActionLink("Questions", "List", "Question", new { area = "" }, new { @class = "navbar-brand" })
+@Html.ActionLink("Users", "UserList", "Admin", new { area = "" }, new { @class = "navbar-brand" })

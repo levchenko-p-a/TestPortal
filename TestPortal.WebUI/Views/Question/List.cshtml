@@ -1,0 +1,14 @@
+﻿@model  TestPortal.WebUI.Models.QuestionListViewModel
+
+@{
+    ViewBag.Title = "Вопросы";
+}
+
+@foreach (var q in Model.Questions)
+{
+    Html.RenderPartial("QuestionSummary", q);
+}
+
+<div class="pager">
+    @Html.PageLinks(Model.Paginglnfo, x => Url.Action("List", new { page = x, category = Model.QuestionCategory }))
+</div>

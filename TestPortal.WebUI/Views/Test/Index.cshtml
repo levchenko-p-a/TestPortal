@@ -1,0 +1,50 @@
+﻿@model IEnumerable<TestPortal.Domain.Entities.Test>
+
+@{
+    ViewBag.Title = "Все тесты";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h2>Все тесты</h2>
+
+<table class="Grid">
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Вопросы
+        </th>
+        <th>
+            Actions
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var test in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => test.TestId)
+            </td>
+            <td>
+                @Html.ActionLink(test.Name, "Edit", new { test.TestId })
+            </td>
+            @foreach (var question in test.Questions)
+            {
+               <td>@question.Text</td>
+            }
+            <td>
+                @using (Html.BeginForm("Delete", "Editor"))
+                {
+                    @Html.Hidden("Id", test.TestId)
+                    <input type="submit" value="Удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+<p>@Html.ActionLink("Добавить тест", "Create")</p>

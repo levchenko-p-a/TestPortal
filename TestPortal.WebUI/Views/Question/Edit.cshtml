@@ -1,0 +1,31 @@
+﻿@model TestPortal.Domain.Entities.Question
+
+@{
+    ViewBag.Title = "Редактор: Вопрос " + @Model.Text;
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h1>@Model.Text</h1>
+
+@using (Html.BeginForm("Edit", "QuestionEditor",
+    FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.EditorForModel()
+    <div class="editor-label">Картинка</div>
+    <div class="editor-field">
+        @if (Model.ImageData == null)
+        {
+            @:отсутствует
+        }
+        else
+        {
+            <img width="150" height="150"
+                 src="@Url.Action("GetImage", "Question", new { Model.QuestionId })" />
+        }
+        <div>Загрузить новую картинку:<input type="file" name="Image" /></div>
+    </div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Вернуться к списку", "Index")
+}
+@Html.ActionLink("Добавить ответ", "Create", "ReplyEditor", new { Model.QuestionId },null)
+@Html.ActionLink("Редактировать ответы", "Index", "ReplyEditor", new { QuestionId=Model.QuestionId },null)

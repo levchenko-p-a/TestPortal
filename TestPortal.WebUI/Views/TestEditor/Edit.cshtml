@@ -1,0 +1,16 @@
+﻿@model TestPortal.Domain.Entities.Test
+
+@{
+    ViewBag.Title = "Редактор: Тест " + @Model.Name;
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h1>@Html.DisplayNameFor(model => model.Name)</h1>
+
+@using (Html.BeginForm("Edit", "TestEditor",
+    FormMethod.Post))
+{
+    @Html.EditorFor(name=>Model.Name)
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Index")
+}

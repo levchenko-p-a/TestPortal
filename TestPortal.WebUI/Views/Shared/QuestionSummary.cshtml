@@ -1,0 +1,18 @@
+﻿@model TestPortal.Domain.Entities.Question
+<div class="item">
+    @if (Model.ImageData != null)
+    {
+        <div style="float:left;margin-right:20px">
+            <img width="75" height="75" src="@Url.Action("GetImage","Question",
+            new {Model.QuestionId})" />
+        </div>
+    }
+    <h3>@Model.Text</h3>
+    @*@using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        @Html.HiddenFor(x => x.id)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" value="+ Add to cart" />
+    }*@
+    <h4>@Html.DisplayNameFor(model => model.Weight) @Model.Weight.ToString()</h4>
+</div>

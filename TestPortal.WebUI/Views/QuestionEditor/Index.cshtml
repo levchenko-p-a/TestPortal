@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TestPortal.Domain.Entities.Question>
+
+@{
+    ViewBag.Title = "Редактор : Все вопросы";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+    int t_index=0, q_index=0;
+}
+
+<h2>Все вопросы</h2>
+
+<table class="Grid">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Multi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            Корректность
+        </th>
+        <th>
+            Действия
+        </th>
+        <th></th>
+    </tr>  
+    @foreach (var question in Model)
+    {
+        <tr>
+            <td>
+                @(t_index = t_index + 1)
+                @Html.ActionLink(question.Text, "Edit", new { question.QuestionId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => question.Multi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => question.Category)
+            </td>
+            <td>
+                @question.Weight.ToString()
+            </td>
+            <td></td>
+            <td>
+                @using (Html.BeginForm("Delete", "ReplyEditor", FormMethod.Post))
+                {
+                    <input type="submit" value="Удалить вопрос" />
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Добавить ответ", "Create", "ReplyEditor", new { question.QuestionId }, null)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Ответы
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        { q_index = 0; }
+        foreach (var reply in question.Replies)
+        {
+            <tr>
+                <td>
+                    @(q_index = q_index + 1)
+                    @Html.ActionLink(reply.Text, "Edit","ReplyEditor", new { reply.ReplyId },null)
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => reply.Correct)
+                </td>
+                <td>
+                    @using (Html.BeginForm("Delete", "ReplyEditor", new { reply.ReplyId }, FormMethod.Post))
+                    {
+                        <input type="submit" value="Удалить ответ" />
+                    }
+                </td>
+                <td></td>
+            </tr>
+        }
+        <tr><td>&nbsp;</td></tr>
+}
+</table>
+<p>@Html.ActionLink("Добавить вопрос", "Create")</p>

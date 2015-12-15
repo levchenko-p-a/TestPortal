@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TestPortal.Domain.Entities.Reply>
+
+@{
+    ViewBag.Title = "Редактор : ответы";
+    Layout = "~/Views/Shared/_EditorLayout.cshtml";
+}
+
+<h2>Ответы</h2>
+
+<table class="Grid">
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReplyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Text)
+        </th>
+        <th>
+            Actions
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReplyId)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.QuestionId)
+            </th>
+            <td>
+                @Html.ActionLink(item.Text, "Edit", new { item.ReplyId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @using (Html.BeginForm("Delete", "ReplyEditor", FormMethod.Post))
+                {
+                    <input type="submit" value="Удалить" />
+                }
+            </td>
+        </tr>
+    }
+    @Html.ActionLink("Вернуться к вопросу", "Edit", "QuestionEditor", new { Model.ElementAtOrDefault(0).QuestionId }, null)
+</table>

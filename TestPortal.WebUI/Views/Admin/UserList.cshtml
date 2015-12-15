@@ -1,0 +1,13 @@
+﻿@model  TestPortal.WebUI.Models.UserListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{Html.RenderPartial("UserInfo", Model.Users);}
+
+<div class="pager">
+    @Html.PageLinks(Model.Paginglnfo, x => Url.Action("UserList", new { page = x, role = Model.Role }))
+</div>
+

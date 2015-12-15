@@ -1,0 +1,12 @@
+2015-06-29 20:17:58.8937|ERROR|TestPortal.Domain.TestContextInitilizer|Object: TestPortal.Domain.Entities.User
+2015-06-29 20:17:58.9728|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите е-мейл 
+2015-06-29 20:17:58.9728|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите пароль 
+2015-06-29 20:17:58.9758|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите фамилию 
+2015-06-29 20:17:58.9758|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите имя 
+2015-06-29 20:17:58.9758|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите отчество 
+2015-06-29 20:21:08.3589|ERROR|TestPortal.Domain.TestContextInitilizer|Object: TestPortal.Domain.Entities.User
+2015-06-29 20:21:08.3736|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите е-мейл 
+2015-06-29 20:21:08.3736|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите пароль 
+2015-06-29 20:21:08.3736|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите фамилию 
+2015-06-29 20:21:08.3736|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите имя 
+2015-06-29 20:21:08.3736|ERROR|TestPortal.Domain.TestContextInitilizer|Пожалуйста, введите отчество 
